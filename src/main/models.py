@@ -1,22 +1,18 @@
 """Model module for the Flask app."""
-from main.db import (
-    Model, Column,
-    Integer, Unicode,
-    Boolean, DateTime
-)
+from main.app_config import db
 from datetime import datetime
 
 
-class Task(Model):
+class Task(db.Model):
     """The Task model for this app."""
 
     __tablename__ = 'tasks'
 
-    id = Column(Integer, primary_key=True)
-    title = Column(Unicode)
-    description = Column(Unicode)
-    completed = Column(Boolean, default=False)
-    datetime = Column(DateTime)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.Unicode)
+    description = db.Column(db.Unicode)
+    completed = db.Column(db.Boolean, default=False)
+    datetime = db.Column(db.DateTime)
 
     def __init__(self, *args, **kwargs):
         """A slight modification to the Task constructor."""
